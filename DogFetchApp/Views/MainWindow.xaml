@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:DogFetchApp"
         mc:Ignorable="d"
         xmlns:p="clr-namespace:DogFetchApp.Properties"
-        Title="{x:Static p:Resources.title_Window}" Height="450" Width="800">
+        Title="{x:Static p:Resources.title_Window}" Height="450" Width="800"
+        Loaded="MainWindow_is_Loaded">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5"/>
@@ -48,33 +49,29 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Column="0" Grid.Row="0" Text="{x:Static p:Resources.tb_Breed}"/>
-            <ComboBox Grid.Column="1" Grid.Row="0">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
+            <ComboBox Grid.Column="1" Grid.Row="0" Name="cBoxBL" >
             </ComboBox>
             <TextBlock Grid.Row="1" Text="{x:Static p:Resources.tb_Photo_nb	}"/>
-            <ComboBox Grid.Row="1" Grid.Column="1">
+            <ComboBox Grid.Row="1" Grid.Column="1" Name="cBoxNbImg">
                 <ComboBoxItem Content="1"/>
                 <ComboBoxItem Content="3"/>
                 <ComboBoxItem Content="5"/>
                 <ComboBoxItem Content="10"/>
             </ComboBox>
-            <Button Grid.Row="2" Grid.Column="1" Content="{x:Static p:Resources.btn_Fetch}" Width="150"/>
+            <Button Grid.Row="2" Grid.Column="1" Content="{x:Static p:Resources.btn_Fetch}" Width="150"  Click="Fetch_Button_Click"/>
             <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <ListView Grid.Row="0" ItemsSource="{Binding}">
+                <ListView Grid.Row="0" Height="190" ItemsSource="{Binding}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-                    <!-- Vous pouvez utiliser le contrôle que vous voulez pour présenter les photos -->
+                    <Image Name="imgListView" Height="150"></Image>
+                    <!-- Vous pouvez utiliser le contrôle que vous voulez pour présenter les photos 
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -82,11 +79,11 @@
                                 <TextBlock Text="{Binding }" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
                             </StackPanel>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
+                    </ListView.ItemTemplate>-->
                 </ListView>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                    <Button Content="{x:Static p:Resources.btn_previous}" Margin="10"/>
-                    <Button Content="{x:Static p:Resources.btn_next}" Margin="10"/>
+                    <Button Name="btn_previous" Content="{x:Static p:Resources.btn_previous}" Margin="10" Click="Previous_Button_Click"/>
+                    <Button Name="btn_next" Content="{x:Static p:Resources.btn_next}" Margin="10" Click="Next_Button_Click"/>
                 </StackPanel>
             </Grid>
         </Grid>

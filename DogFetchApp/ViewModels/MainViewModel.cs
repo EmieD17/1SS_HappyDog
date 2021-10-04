@@ -32,7 +32,7 @@ namespace DogFetchApp.ViewModels
             {
                 if (e.Value.Count == 0)
                 {
-                    //BL.Items.Add(e.Key);
+                   
                 }
                 else
                 {
